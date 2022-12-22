@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
+    <link rel="icon" href="/Images/millennium_eye.png">  
+    <link rel="stylesheet" href="/css/lobby.css">  
+    <title>Millenium Nexus</title>
+</head>
+<body background = "/Images/ygo_background2.png">
+    <div >
+        <div  class="container" >
+            <h1 class="title white">Lobby</h1>
+            <!-- <input class="searchBar" placeholder="Search for user..."> -->
+            <div id ="lobby"  class="player_list">
+                <div class="user"><%= username %></div>
+            </div>
+        </div>
+        <div class="between">
+            <img id="yugioh" src="/Images/yugioh3.png" alt="">
+            <form id="chat">
+                    <div id="msg_output"><h1 class="name">Public Chat</h1></div>
+                <input style="font-size: 1.2vw" placeholder="Type here. . ." autocomplete="off"  id="msg_input" type="text">
+                </form>
+                <button class="button-29" id="deck">Edit Deck</button>
+                <a class="button-29" href="/game/logout" id="logout">Logout</a>
+            </div>
+
+            <div id="challenger" class="container right">
+                <h1 class="title white ">Challenges</h1>
+                <div id="challenges" class="player_list">
+                </div>
+        </div>
+            
+
+        </div>
+    </div>
+</body>
+</html>
+
+<script src = "/js/lobby.js"></script>   
+<script src="/socket.io/socket.io.js"></script>
+

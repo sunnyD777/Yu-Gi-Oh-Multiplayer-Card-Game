@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/game.css">
+    <link rel="icon" href="/Images/millennium_eye.png">    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+         var Deck = <%-JSON.stringify(deck)%>;
+         var gameRoom = <%-JSON.stringify(gameRoom)%>;
+    </script> 
+    <title>Millenium Nexus</title>
+</head>
+<body id ="screen" background = "/Images/ygo.jpg">
+    <div id="preGame">
+       <div id="rockPaperScissors">
+            <div id="opponentChoices" >
+                    <img  src="/Images/card_back.png">
+                    <img src="/Images/card_back.png">
+                    <img src="/Images/card_back.png">
+            </div>
+    <div style="margin:3vh 0" >
+        <div  id="userChoice"></div>
+        <div id="opponentChoice"></div>
+    </div>
+    <div id="userChoices" >
+            <img class="card" name="Rock" dscr='The option "rock" in "rock paper scissors".' src="/Images/rock.jpg">
+            <img class="card" name="Paper" dscr='The option "paper" in "rock paper scissors".' src="/Images/paper.jpg">
+            <img class="card" name="Scissors" dscr='The option "scissors" in "rock paper scissors".' src="/Images/scissors.jpg">
+    </div>
+    </div>
+    <div id="turnChoice">
+            <h1 id="directions"></h1>
+            <img class="turn" name="First" dscr='Go first.' src="/Images/first.jpg" alt="">
+            <img class="turn" name="Second" dscr='Go second.' src="/Images/second.jpg" alt="">
+        </div>
+</div>
+    <div id="card_info">
+            <img id="viewer" src="/Images/blank_space.png">
+            <div id ="info">
+                <p id="name"></p> 
+                <p id="dscr"></p>
+                
+            </div>
+            <img id="back" src="/Images/back.png">
+    </div>
+    <div id="grid" > 
+            <div id="opp_hand"></div>   
+            <div id="oppSpellTrapZone">
+                    <div id="opp_deck_container">
+                            <img id="opp_deck" src="/Images/card_back.png">
+                            <h1 id="opp_deck_num">?</h1>   
+                        </div>
+                <div class="container" used="false" id="R0C0"><img src="/Images/rectangle.jpg"  class="zone"></div>
+                <div class="container" used="false" id="R0C1"><img src="/Images/rectangle.jpg"  class="zone"></div>
+                <div class="container" used="false" id="R0C2"><img src="/Images/rectangle.jpg"  class="zone"></div>
+                <div class="container" used="false" id="R0C3"><img src="/Images/rectangle.jpg"  class="zone"></div>
+                <div class="container" used="false" id="R0C4"><img src="/Images/rectangle.jpg"  class="zone"></div>
+                <div id="opp_ed_container">
+                    <img id="opp_ed" src="/Images/card_back.png">
+                    <h1 id="opp_ed_num">?</h1>   
+                </div>         
+               </div>
+            <div id="oppMonsterZone">
+                    <div id="opp_rfp_container">
+                            <img id="opp_rfp" src="/Images/rfp.jpg">
+                            <h1 id="opp_rfp_num">0</h1>
+                            <div id = "opp_rfp_view" class="viewer" >
+                                    <h1 class="title">Opponent Banished<span><button id="opp_rfp_exit" class = "exit">X</button></span></h1>  
+                                    <div id="opp_rfp_cards"></div>       
+                                </div>
+                    </div>     
+                <div id="opp_gy_container">
+                        <img id="opp_gy" src="/Images/gy.jpg">
+                        <h1 id="opp_gy_num">0</h1>
+                        <div id = "opp_gy_view" class="viewer" >
+                                <h1 class="title">Opponent Graveyard<span><button id="opp_gy_exit" class = "exit">X</button></span></h1>  
+                                <div id="opp_gy_cards"></div>       
+                            </div>
+                </div>               
+                <div class="container" used="false" id="R1C0"><img src="/Images/rectangle.jpg"  class="zone"></div>
+                <div class="container" used="false" id="R1C1"><img src="/Images/rectangle.jpg"  class="zone"></div>
+                <div class="container" used="false" id="R1C2"><img src="/Images/rectangle.jpg"  class="zone"></div>
+                <div class="container" used="false" id="R1C3"><img src="/Images/rectangle.jpg"  class="zone"></div>
+                <div class="container" used="false" id="R1C4"><img src="/Images/rectangle.jpg"  class="zone"></div>
+                <div id="opp_field_zone"><img  src="/Images/field_spell_zone.jpg" ></div>
+            </div>
+            <div style="position:relative;left: -6.7vw;" >
+            <img id="coin" src="/Images/coin.png" >
+            <ul id = "phases">
+                    <li id ="dp">DP</li>
+                    <li id="sp">SP</li>
+                    <li id="mp1">MP1</li>
+                    <li id="bp">BP</li>
+                    <li id="mp2">MP2</li>
+                    <li id="ep">EP</li>
+                    <button id="end">END TURN</button>
+            </ul>
+            <img id="dice" src="/Images/dice.png" >
+        </div>
+        <div id="monsterZone">
+            <div id="field_zone"><img  src="/Images/field_spell_zone.jpg" ></div>
+            <div class="container" used="false" id="R2C0"><img src="/Images/rectangle.jpg"  class="zone"></div>
+            <div class="container" used="false" id="R2C1"><img src="/Images/rectangle.jpg"  class="zone"></div>
+            <div class="container" used="false" id="R2C2"><img src="/Images/rectangle.jpg"  class="zone"></div>
+            <div class="container" used="false" id="R2C3"><img src="/Images/rectangle.jpg"  class="zone"></div>
+            <div class="container" used="false" id="R2C4"><img src="/Images/rectangle.jpg"  class="zone"></div>
+            <div id="gy_container">
+                <img id="gy" src="/Images/gy.jpg">
+                <h1 id="gy_num">0</h1>
+                <div id = "gy_view" class="viewer" >
+                        <h1 class="title">Graveyard<span><button id="gy_exit" class = "exit">X</button></span></h1>  
+                        <div id="gy_cards"></div>       
+                    </div>
+        </div>
+        <div id="rfp_container">
+                <img id="rfp" src="/Images/rfp.jpg">
+                <h1 id="rfp_num">0</h1>
+                <div id = "rfp_view" class="viewer">
+                        <h1 class="title">Banished<span><button id="rfp_exit" class = "exit">X</button></span></h1>  
+                        <div id="rfp_cards"></div>       
+                </div>
+         </div>
+        
+            </div>
+        <div id="spellTrapZone">
+            <div id="ed_container"><img id="ed" src="/Images/card_back.png">
+                <h1 id="ed_num">?</h1>   
+            <div id = "ed_view" class="viewer">
+                    <h1 class="title"> Extra Deck<span><button id="ed_exit" class = "exit">X</button>       
+                    </span></h1>  
+                    <div id="ed_cards"></div>       
+                    </div>
+            </div>
+            <div class="container" used="false" id="R3C0"><img src="/Images/rectangle.jpg"  class="zone"></div>
+            <div class="container" used="false" id="R3C1"><img src="/Images/rectangle.jpg"  class="zone"></div>
+            <div class="container" used="false" id="R3C2"><img src="/Images/rectangle.jpg"  class="zone"></div>
+            <div class="container" used="false" id="R3C3"><img src="/Images/rectangle.jpg"  class="zone"></div>
+            <div class="container" used="false" id="R3C4"><img src="/Images/rectangle.jpg"  class="zone"></div>
+            <div id="deck_container">
+            <img id="deck" src="/Images/card_back.png">
+            <h1 id="deck_num">?</h1>   
+        <div id = "deck_view" class="viewer">
+                <h1 class="title">Deck<span><button id="deck_exit" class = "exit">X</button>       
+                </span></h1>  
+                <div id="deck_cards"></div>       
+                </div>
+        </div>
+        </div>
+            <div id="hand">
+                </div>
+                <div id="cardHolderToField"></div>
+        </div>
+        <div id="players">
+                    <div style="background-color: #333;height: 15vh; border-color: teal;" id="opponent">
+                        <div style="color: white">
+                            <div style="display: flex;">  
+                               
+                                <img style="height: 10vh; " src="/Images/kaiba.png">
+                            <h1 style="text-align: center; flex: 1;" id="opp_username">Opponent</h1>
+                            
+                             </div>
+                          
+                            <!-- <h1 >LP: <span id="lp">8000</span></h1> -->
+                            <div class="meter">
+                                <span id="opp_lp" style="width: 100%; font-weight: bold;">8000</span>
+                              </div>
+                        </div>
+                       
+                             
+        </div>
+                <form id="chat" style="margin-top: 4vh;;margin-bottom: 4vh;">
+                        <div id="msg_output">
+                            <h1 class="title">Chat</h1>
+                        </div>
+                        <input id="msg_input" type="text" autocomplete="off" placeholder="Type here. . ." style="font-size: ;1.2vw">
+                    </form>
+                    <div style="background-color: #333; height: 15vh;" id="user">
+                        <div style="color: white">
+                            <div style="display: flex;">
+                                <img  style="height: 10vh;" src="/Images/yugi.png"> 
+                                <h1 style="text-align: center; flex: 1;" id="username"><%= username%></h1>
+                               </div>
+                            
+                       
+                            <!-- <h1 >LP: <span id="lp">8000</span></h1> -->
+                            <div class="meter">
+                                <span id="lp" style="width: 100%; font-weight: bold;">8000</span>
+                              </div>
+                        </div>
+                        <!-- <div style="width:40%;float: left;">
+                            <img src="./Images/yugi.png">
+                             </div> -->
+                             
+    </div>
+                <div id="life">
+                <input  id="value" type="number" placeholder="Add or Subtract Life Points. . .">
+                <br>
+                <button id="add_lp">+</button>
+                <button id="sub_lp">- </button> 
+            </div>
+                </div>
+
+        <ul class="options_menu" id="deck_options">
+            <li id ="d_op1">View</li>
+            <li id="d_op2">Mill</li>
+            <li id="d_op3">Banish Top</li>            
+            <li id="d_op4">Shuffle</li>      
+            <li id="d_op5">Draw</li>   
+        </ul>
+        <ul class="options_menu" id="deck_monster_options">
+            <li id="dc_op1" class="toMField">Summon Attack Mode</li>
+            <li id="dc_op2" class="toMField">Summon Defense Mode</li>
+            <li id="dc_op3">To Hand</li>      
+            <li id="dc_op4">Send to Graveyard</li>  
+            <li id="dc_op5">Banish</li>         
+        </ul>
+        <ul class="options_menu" id="deck_st_options">
+            <li id="dc_st_op1" class="toSTField">To S/T</li>
+            <li id="dc_st_op2">To Grave</li>
+            <li id="dc_st_op3">Banish</li>                    
+            <li id="dc_st_op4">To Hand</li>           
+        </ul>
+        <ul class="options_menu" id="hand_monster_options">
+            <li id="h_op1" class="toMField">Summon Attack Mode</li>
+            <li id="h_op2" class="toMField">Summon Defense Mode</li>
+            <li id="h_op3" class="toMField">Set</li>      
+            <li id="h_op4">Send to Graveyard</li>  
+            <li id="h_op5">Banish</li> 
+            <li id="h_op6">To Deck</li>                       
+        </ul>
+        <ul class="options_menu" id="hand_st_options">
+            <li id="h_st_op1" class="toSTField">Activate</li>
+            <li id="h_st_op2" class="toSTField">Set</li> 
+            <li id='h_st_op3'>Send to Graveyard</li>   
+            <li id="h_st_op4">Banish</li>
+            <li id="h_st_op5">To Deck</li>                                     
+        </ul>
+        <ul class="options_menu" id = "ed_monster_options">
+            <li id="ed_op1" class="toMField">Summon Attack Mode</li>
+            <li id="ed_op2" class="toMField">Summon Defense Mode</li>
+    </ul>      
+    <ul class="options_menu" id = "field_monster_options">
+            <li id="f_op1">Switch to Attack Mode</li>
+            <li id="f_op2">Switch to Defense Mode</li>
+            <li id="f_op3">Set</li> 
+            <li id="f_op4">Flip</li> 
+            <li id="f_op5">Flip Summon</li>
+            <li id='f_op6'>Send to Graveyard</li>
+            <li id='f_op7'>Banish</li>                
+            <li id='f_op8'>Return to Hand</li>    
+            <li id='f_op9'>Return To Deck</li>  
+            <li id="f_op10">Change Control</li>  
+            <li id="f_op11" class="bp_options">Attack Directly</li>
+            <li id="f_op12" class="bp_options">Attack</li>                                                                         
+        </ul>
+        <ul class="options_menu" id="field_st_options">
+                <li id = "f_st_op1">Activate</li>
+                <li id="f_st_op2">Set</li> 
+                <li id='f_st_op3'>Send to Graveyard</li>
+                <li id="f_st_op4">Banish</li>  
+                <li id="f_st_op5">Return To Hand</li> 
+                <li id="f_st_op6">To Deck</li>     
+        </ul>
+        
+        <ul class="options_menu" id = "gy_monster_options">
+            <li id = "gy_op1">Summon Attack Mode</li>
+            <li id="gy_op2"> Summon Defense Mode</li>
+            <li id="gy_op3">To Hand</li>                                    
+            <li id="gy_op4">Banish</li>
+            <li id="gy_op5">To Deck</li>                                    
+        </ul>
+    
+        <ul class="options_menu" id = "gy_st_options">
+            <li id = "gy_st_op1">To S/T</li>
+            <li id="gy_st_op2">Banish</li>
+            <li id="gy_st_op3">To Hand</li> 
+            <li id="gy_st_op4">To Deck</li>                                        
+        </ul>
+        <ul class="options_menu" id = "rfp_monster_options">
+            <li id = "rfp_op1">Summon Attack Mode</li>
+            <li id="rfp_op2"> Summon Defense Mode</li>
+            <li id="rfp_op3">To Hand</li>                                    
+            <li id="rfp_op4">To Grave</li> 
+            <li id="rfp_op5">To Deck</li>                                                                
+        </ul>
+        <ul class="options_menu" id = "rfp_st_options">
+            <li id = "rfp_st_op1">To S/T</li>
+            <li id="rfp_st_op2">To Grave</li>
+            <li id="rfp_st_op3">To Hand</li>  
+            <li id="rfp_st_op4">To Deck</li>                                                                
+        </ul>
+</body>
+</html>
+<script src = "/js/game.js"></script>   
+<script src="/socket.io/socket.io.js"></script>

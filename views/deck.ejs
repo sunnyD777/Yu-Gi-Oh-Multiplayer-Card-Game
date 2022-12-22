@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/deck.css">
+    <link rel="icon" href="/Images/millennium_eye.png">    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+    <script>
+                 var userDeck = <%-JSON.stringify(userDeck)%>
+    </script>  
+    <title>Millenium Nexus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo:wght@300&display=swap" rel="stylesheet"/>
+</head>
+<body background="/Images/ygo_background2.png">
+    <div id="card_info">
+            <img id="viewer" src="/Images/blank_space.png">
+            <div id ="info">
+                <p id="name"></p> 
+                <p id="dscr"></p>
+            </div>
+        <div id="deckButtons">
+            <button style="background-color: teal;color: white; font-weight: bold;" id="saveDeck">Save</button>
+            <button style="background-color: teal;color: white; font-weight: bold;" id="clearDeck">Clear</button>
+            <br>
+            <img id="back" src="/Images/back.png">
+        </div>
+    </div>
+    <form id="queryOptions">
+            <h1 style="font-weight: 2vw;" class="qtitle ">Card Search</h1>
+            <span>Name:<input autocomplete="off" placeholder="Enter card name here..."  class="queryOption" id="Name" type="text"></span><br>
+            <span>Descr:<input autocomplete="off"  placeholder="Enter card description here..." class="queryOption" id="description" type="text"></span><br><br>
+           
+            <div style="display: flex; margin-bottom: 1.25vh;">
+            <div id="types">
+            <div class="container" >
+                    <div class="options"  id="cardTypeSelector">Card Type</div>
+                    <ul id="cardType">
+                        <li class="back" >&nbsp;</li>
+                        <li>Monster</li>
+                        <li>Spell</li>
+                        <li>Trap</li>
+                    </ul>
+                </div>
+                <div class="container">
+                  <div id="subType"  class ="options">Sub Type</div>
+                  <ul id="subTypeSelector" class="selectOption">
+                    </ul></div>
+                    <br>
+                    <div class="container" >
+                            <div  id="monstType" class ="options">Monst Type</div>
+                            <ul id="type" class="selectOption">
+                                  <li class="back" >&nbsp;</li>
+                                  <li>Aqua</li>
+                                  <li>Beast</li>
+                                  <li>Beast-Warrior</li>
+                                  <li>Cyberse</li>
+                                  <li>Dinosaur</li>
+                                  <li>Divine-Beast</li>
+                                  <li>Dragon</li>
+                                  <li>Fairy</li>
+                                  <li>Fiend</li>
+                                  <li>Fish</li>
+                                  <li>Insect</li>
+                                  <li>Machine</li>
+                                  <li>Plant</li>
+                                  <li>Psychic</li>
+                                  <li>Pyro</li>
+                                  <li>Reptile</li>
+                                  <li>Rock</li>
+                                  <li>Sea Serpent</li>
+                                  <li>Spellcaster</li>
+                                  <li>Thunder</li>
+                                  <li>Warrior</li>
+                                  <li>Winged Beast</li>
+                                  <li>Wyrm</li>
+                                  <li>Zombie</li>
+                              </ul></div>
+                              <div class="container">
+                                    <div id="monstAttr" class ="options">Monst Attr</div>
+                                    <ul id="attribute" class="selectOption">
+                                        <li class="back" >&nbsp;</li>
+                                          <li>DARK</li>
+                                          <li>DIVINE</li>
+                                          <li>EARTH</li>
+                                          <li>FIRE</li>
+                                          <li>LIGHT</li>
+                                          <li>WATER</li>
+                                          <li>WIND</li>
+                                      </ul></div>
+                                    </div>
+            
+    
+             
+            <div style="margin-bottom: 6vh;">
+                <div>
+                    <input type="number" min="1" max="12" id="levelLow" disabled="disabled" class="num mon">&#8804; Level &#8804;<input id="levelHigh" min="1" max="12" type="number" disabled="disabled" class="num mon">               
+                 </div>
+             <input disabled="disabled"  type="number" id="atkLow" class="numStat mon">&#8804; ATK &#8804;<input type="number" id="atkHigh" disabled="disabled" class="numStat mon">      
+             <br>                    
+             <input disabled="disabled" type="number" id="defLow" class="numStat mon">&#8804; DEF &#8804;<input disabled="disabled" type="number" id="defHigh" class="numStat mon"> 
+             <button style="margin-left:0.5vw; width: 10vw;margin-top: 1.9vh;height: 3vh; background-color: teal; font-weight: bold; color: white;" type="submit">Search</button>  
+            </div>            
+        </div>
+            <div class="pagination">
+                <div style=" width: 50%; margin: auto;"><a id="leftPage" href="#">❮</a> 
+                    <b id="currPage" class="size">1</b><b class="size">/</b><b id="totalPages" class="size">1</b>
+                    <a id="rightPage">❯</a></div>  
+              </div>
+            <div id="cardResultDisplay">
+            <div>
+                <img class="resultCard" src="/Images/rectangle.jpg">
+                <img class="resultCard" src="/Images/rectangle.jpg">
+                <img class="resultCard" src="/Images/rectangle.jpg">
+                <img class="resultCard" src="/Images/rectangle.jpg">
+                <img class="resultCard" src="/Images/rectangle.jpg">
+                <img class="resultCard" src="/Images/rectangle.jpg">
+              </div>
+              <div>
+                    <img class="resultCard" src="/Images/rectangle.jpg">
+                    <img class="resultCard" src="/Images/rectangle.jpg">  
+                    <img class="resultCard" src="/Images/rectangle.jpg">
+                    <img class="resultCard" src="/Images/rectangle.jpg">
+                    <img class="resultCard" src="/Images/rectangle.jpg">
+                    <img class="resultCard" src="/Images/rectangle.jpg">
+                  </div>
+                <div>
+                    <img class="resultCard" src="/Images/rectangle.jpg">
+                    <img class="resultCard" src="/Images/rectangle.jpg">
+                    <img class="resultCard" src="/Images/rectangle.jpg">
+                    <img class="resultCard" src="/Images/rectangle.jpg">
+                    <img class="resultCard" src="/Images/rectangle.jpg">
+                    <img class="resultCard" src="/Images/rectangle.jpg">
+                    </div>
+                    <div>
+                        <img class="resultCard" src="/Images/rectangle.jpg">
+                        <img class="resultCard" src="/Images/rectangle.jpg">
+                        <img class="resultCard" src="/Images/rectangle.jpg">
+                        <img class="resultCard" src="/Images/rectangle.jpg">
+                        <img class="resultCard" src="/Images/rectangle.jpg">
+                        <img class="resultCard" src="/Images/rectangle.jpg">
+                    </div>
+                    <div>
+                        <img class="resultCard" src="/Images/rectangle.jpg">
+                        <img class="resultCard" src="/Images/rectangle.jpg">
+                        <img class="resultCard" src="/Images/rectangle.jpg">
+                        <img class="resultCard" src="/Images/rectangle.jpg">
+                        <img class="resultCard" src="/Images/rectangle.jpg">
+                        <img class="resultCard" src="/Images/rectangle.jpg">
+                    </div>
+                </div>
+              
+            </form>
+    <div id="container">
+    <div id="deck">
+        <h1 class="title white">Main Deck</h1>
+            <div class="row">
+                <img class="slot" src="/Images/rectangle.jpg">
+                <img class="slot" src="/Images/rectangle.jpg">
+                <img class="slot" src="/Images/rectangle.jpg">
+                <img class="slot" src="/Images/rectangle.jpg">
+                <img class="slot" src="/Images/rectangle.jpg">
+                <img class="slot" src="/Images/rectangle.jpg">
+                <img class="slot" src="/Images/rectangle.jpg">
+                <img class="slot" src="/Images/rectangle.jpg">
+                <img class="slot" src="/Images/rectangle.jpg">
+                <img class="slot" src="/Images/rectangle.jpg">
+            </div>
+            <div class="row">
+                    <img class="slot" src="/Images/rectangle.jpg">
+                    <img class="slot" src="/Images/rectangle.jpg">
+                    <img class="slot" src="/Images/rectangle.jpg">
+                    <img class="slot" src="/Images/rectangle.jpg">
+                    <img class="slot" src="/Images/rectangle.jpg">
+                    <img class="slot" src="/Images/rectangle.jpg">
+                    <img class="slot" src="/Images/rectangle.jpg">
+                    <img class="slot" src="/Images/rectangle.jpg">
+                    <img class="slot" src="/Images/rectangle.jpg">
+                    <img class="slot" src="/Images/rectangle.jpg">
+                </div>
+                <div class="row">
+                        <img class="slot" src="/Images/rectangle.jpg">
+                        <img class="slot" src="/Images/rectangle.jpg">
+                        <img class="slot" src="/Images/rectangle.jpg">
+                        <img class="slot" src="/Images/rectangle.jpg">
+                        <img class="slot" src="/Images/rectangle.jpg">
+                        <img class="slot" src="/Images/rectangle.jpg">
+                        <img class="slot" src="/Images/rectangle.jpg">
+                        <img class="slot" src="/Images/rectangle.jpg">
+                        <img class="slot" src="/Images/rectangle.jpg">
+                        <img class="slot" src="/Images/rectangle.jpg">
+                    </div>
+                    <div class="row">
+                            <img class="slot" src="/Images/rectangle.jpg">
+                            <img class="slot" src="/Images/rectangle.jpg">
+                            <img class="slot" src="/Images/rectangle.jpg">
+                            <img class="slot" src="/Images/rectangle.jpg">
+                            <img class="slot" src="/Images/rectangle.jpg">
+                            <img class="slot" src="/Images/rectangle.jpg">
+                            <img class="slot" src="/Images/rectangle.jpg">
+                            <img class="slot" src="/Images/rectangle.jpg">
+                            <img class="slot" src="/Images/rectangle.jpg">
+                            <img class="slot" src="/Images/rectangle.jpg">
+                        </div>
+                        <div class="row">
+                                <img class="slot" src="/Images/rectangle.jpg">
+                                <img class="slot" src="/Images/rectangle.jpg">
+                                <img class="slot" src="/Images/rectangle.jpg">
+                                <img class="slot" src="/Images/rectangle.jpg">
+                                <img class="slot" src="/Images/rectangle.jpg">
+                                <img class="slot" src="/Images/rectangle.jpg">
+                                <img class="slot" src="/Images/rectangle.jpg">
+                                <img class="slot" src="/Images/rectangle.jpg">
+                                <img class="slot" src="/Images/rectangle.jpg">
+                                <img class="slot" src="/Images/rectangle.jpg">
+                            </div>
+        <div class="row">
+                <img class="slot" src="/Images/rectangle.jpg">
+                <img class="slot" src="/Images/rectangle.jpg">
+                <img class="slot" src="/Images/rectangle.jpg">
+                <img class="slot" src="/Images/rectangle.jpg">
+                <img class="slot" src="/Images/rectangle.jpg">
+                <img class="slot" src="/Images/rectangle.jpg">
+                <img class="slot" src="/Images/rectangle.jpg">
+                <img class="slot" src="/Images/rectangle.jpg">
+                <img class="slot" src="/Images/rectangle.jpg">
+                <img class="slot" src="/Images/rectangle.jpg">
+            </div> 
+        </div>
+    <div id="ed">
+            <h2 class="title white">Extra Deck</h2>
+                <img class="ed_slot" src="/Images/rectangle.jpg">
+                <img class="ed_slot" src="/Images/rectangle.jpg">
+                <img class="ed_slot" src="/Images/rectangle.jpg">
+                <img class="ed_slot" src="/Images/rectangle.jpg">
+                <img class="ed_slot" src="/Images/rectangle.jpg">
+                <img class="ed_slot" src="/Images/rectangle.jpg">
+                <img class="ed_slot" src="/Images/rectangle.jpg">
+                <img class="ed_slot" src="/Images/rectangle.jpg">
+                <img class="ed_slot" src="/Images/rectangle.jpg">
+                <img class="ed_slot" src="/Images/rectangle.jpg">
+                <img class="ed_slot" src="/Images/rectangle.jpg">
+                <img class="ed_slot" src="/Images/rectangle.jpg">
+                <img class="ed_slot" src="/Images/rectangle.jpg">
+                <img class="ed_slot" src="/Images/rectangle.jpg">
+                <img class="ed_slot" src="/Images/rectangle.jpg">
+    </div>
+    </div>
+</body>
+</html>
+<script src = "/js/deck.js"></script>   
+<script src="/socket.io/socket.io.js"></script>

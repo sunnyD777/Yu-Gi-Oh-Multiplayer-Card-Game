@@ -1,0 +1,248 @@
+body{
+overflow: hidden;  
+  background-repeat: no-repeat;
+    background-size: cover;
+    height:100vh;
+  font-family: 'Exo', sans-serif;
+  margin: 0;
+}
+.pagination {
+  width: 100%;
+  margin-left: 1.5vh;
+  font-size: 3vh;
+  display: inline-block;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 0.45vw 0.3vw;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  background-color: #ffffc4;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+.pagination a:hover:not(.active) {background-color: #ddd;}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.queryOption{
+width: 14vw;
+margin: 0.8vh 0;
+margin-left: 1vw;
+display: inline-block;
+border: 1px solid #ccc;
+box-shadow: inset 0 1px 3px #ddd;
+border-radius: 4px;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+padding: 1vh;
+}
+.slot{
+    height: 10.5vh;
+    width:3.5vw;
+    margin-right: 0.5vw;
+    margin-bottom: 0.5vw;
+}
+.options{
+  width:6vw;
+  text-align: center;
+  cursor:pointer;
+  background-color:black;
+  color: white;
+  opacity: 0.7;
+}
+#cardTypeSelector{
+    /* width:6vw;
+    text-align: center;
+    cursor:pointer;
+    background-color:black;
+    color: white; */
+    opacity: 1;
+}
+#cardType{
+  display: none;
+  position: absolute;
+  width: 6vw;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+#cardType li{
+  text-align: center;
+  font-size: 1vw;
+  border-bottom: solid 1px black;
+  background-color: white; 
+  color: black; 
+  display: block;
+}
+#cardType li:hover{
+  background-color: #ccc;
+  color: blue;
+  cursor: pointer;
+}
+#types{
+  margin-left: 0.5vw;
+}
+.num{
+  width: 1.2vw;
+  margin-right: 0.5vw;
+  margin-left: 0.5vw;
+  margin-bottom: 1vh;
+}
+.numStat{
+  width: 2.5vw;
+  margin-right: 0.5vw;
+  margin-left: 0.5vw;
+  margin-bottom: 1vh;
+}
+.selectOption{
+  display: none;
+  position: absolute;
+  width: 6vw;
+  height: 10vh;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  z-index: 1;
+}
+.selectOption li{
+  text-align: center;
+  font-size: 1vw;
+  border-bottom: solid 1px black;
+  background-color: white; 
+  color: black; 
+  display: block;
+}
+
+.selectOption li:hover{
+  background-color: #ccc;
+  color: blue;
+  cursor: pointer;
+}
+.ed_slot{
+  height: 7.5vh;
+  width:2.5vw;
+}
+.resultCard{
+  height: 9vh;
+  width:3vw;
+  margin: 0;
+}
+.size{
+float: left;
+padding: 1vh;
+font-weight: bold;
+}
+#cardResultDisplay{
+  margin-top:1vh;
+  margin-left: 0.9vh;
+  display: inline-block;
+}
+#container{
+  display: inline-block;
+  margin-left: 10vw;
+}
+.container{
+  display: inline-block;
+  margin-bottom: 2vh;
+}
+#ed{
+  margin-top:4vh;
+}
+#queryOptions{
+  float: right;
+  background-color: #ffdc92;
+  /* border-radius: 1%; */
+  border-radius:  1% 0 0 1%;
+  width:20vw;
+  height: 100%;
+}
+.queryOption{
+  width:14vw;
+}
+#name{
+    font-weight: bold;
+  }
+#card_info{
+   float: left;
+   margin-left: 1vw;
+   margin-top: 0.9vh;
+}
+  #info{
+    font-size: 1vw;
+    border-style: solid;
+    background-color: white;
+    height: 30vh;
+    width: 15vw;
+    overflow-y: auto;
+  }
+  #viewer{
+    width:15vw;
+    height: 45vh;
+  }
+  .title{
+
+    margin-top: 0;
+    font-size: 1.7vw;
+    text-align: center;
+  }
+  .qtitle{
+
+    margin-top: 0;
+    font-size: 2vw;
+    text-align: center;
+  }
+  .white{
+    color: white;
+  }
+  .back{
+    font-weight: bold;
+  }
+  #deckButtons{
+    margin-top: 5vh;
+  }
+  #deckButtons button{
+    width: 7.5vw;
+  }
+  #back{
+    margin-top: 2vh;
+    width: 15vw;
+    height:13vh;
+  }
+  #back:hover{
+    cursor: pointer;
+  }
+  .arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 1vw;
+  }
+.arrow:hover {
+  border-color: red;
+}
+  .right {
+    margin-left: 1vw;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+  
+  .left {
+    margin-right: 1vw;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+  }
